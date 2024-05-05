@@ -145,5 +145,5 @@ function websocketConnect(){
         }
     }
 */
-    socket.send(JSON.stringify(payload))
+   // socket.send(JSON.stringify(payload))
 }
