@@ -152,7 +152,7 @@ function websocketConnect(){
     //socket.send(JSON.stringify(payload))
 
     const resetBoard = () => {
-        var textBox = document.getElementById('#TEXTBOX');
+        var textbox = document.getElementById('TEXTBOX');
 
         socket.send('{"action": "sendmessage", "message": "',textBox.nodeValue,'"}');
         console.log(textBox.nodeValue)
