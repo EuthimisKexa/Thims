@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-   /* const resetBoard = () => {
+    const resetBoard = () => {
         board = ['', '', '', '', '', '', '', '', ''];
         isGameActive = true;
         announcer.classList.add('hide');
@@ -115,17 +115,17 @@ window.addEventListener('DOMContentLoaded', () => {
             tile.classList.remove('playerX');
             tile.classList.remove('playerO');
         });
-    } */
+    } 
 
     tiles.forEach( (tile, index) => {
         tile.addEventListener('click', () => userAction(tile, index));
     });
 
-    //resetButton.addEventListener('click', resetBoard);
+    resetButton.addEventListener('click', resetBoard);
 });
 
 function websocketConnect(){
-    const announcer = document.querySelector('.announcer');
+    const messageSok = document.querySelector('.messageSocket');
     const resetButton = document.querySelector('#reset');
     const socket = new WebSocket("wss://0o28d1tfc9.execute-api.eu-central-1.amazonaws.com/production/") //endpoint wss://
 
@@ -139,7 +139,7 @@ function websocketConnect(){
     socket.addEventListener('message', e=> {
         //console.log('Your answer is:' ,JSON.parse(e.data).message)
         console.log('Your answer is:' , e.data)
-        announcer.innerText = e.data;
+        messageSok.innerText = e.data;
     })
 
   /*  window.ask = function (msg){
@@ -152,7 +152,7 @@ function websocketConnect(){
     //socket.send(JSON.stringify(payload))
 
     const resetBoard = () => {
-        socket.send('{"action": "sendmessage", "message": "hello, everyone!"}');
+        socket.send('{"action": "sendmessage", "message": "Message from Chrome"}');
     }
     resetButton.addEventListener('click', resetBoard);
 }
