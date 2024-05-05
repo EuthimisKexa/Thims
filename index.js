@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    const resetBoard = () => {
+   /* const resetBoard = () => {
         board = ['', '', '', '', '', '', '', '', ''];
         isGameActive = true;
         announcer.classList.add('hide');
@@ -115,13 +115,13 @@ window.addEventListener('DOMContentLoaded', () => {
             tile.classList.remove('playerX');
             tile.classList.remove('playerO');
         });
-    }
+    } */
 
     tiles.forEach( (tile, index) => {
         tile.addEventListener('click', () => userAction(tile, index));
     });
 
-    resetButton.addEventListener('click', resetBoard);
+    //resetButton.addEventListener('click', resetBoard);
 });
 
 function websocketConnect(){
@@ -147,5 +147,10 @@ function websocketConnect(){
         }
     }
 */
-   // socket.send(JSON.stringify(payload))
+    //socket.send(JSON.stringify(payload))
+
+    const resetBoard = () => {
+        socket.send("test");
+    }
+    resetButton.addEventListener('click', resetBoard);
 }
