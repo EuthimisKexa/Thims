@@ -154,6 +154,7 @@ function websocketConnect(){
 
     const resetBoard = () => {
         socket.send('{"action": "sendmessage", "message": "',textBox.nodeValue,'"}');
+        console.log(textBox.nodeValue)
 
     }
     resetButton.addEventListener('click', resetBoard);
