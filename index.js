@@ -125,6 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function websocketConnect(){
+    const announcer = document.querySelector('.announcer');
     const resetButton = document.querySelector('#reset');
     const socket = new WebSocket("wss://0o28d1tfc9.execute-api.eu-central-1.amazonaws.com/production/") //endpoint wss://
 
