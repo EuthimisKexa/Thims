@@ -152,7 +152,7 @@ function websocketConnect(){
     //socket.send(JSON.stringify(payload))
 
     const resetBoard = () => {
-        socket.send("test");
+        socket.send('{"action": "sendmessage", "message": "hello, everyone!"}');
     }
     resetButton.addEventListener('click', resetBoard);
 }
