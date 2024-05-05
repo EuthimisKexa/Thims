@@ -140,7 +140,7 @@ function websocketConnect(){
 
     window.ask = function (msg){
         const payload =  {
-            action = 'message',
+            action = 'action',
             msg
         }
     }
