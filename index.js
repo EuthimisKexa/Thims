@@ -128,7 +128,7 @@ function websocketConnect(){
     const messageSok = document.querySelector('.messageSocket');
     const resetButton = document.querySelector('#reset');
     const socket = new WebSocket("wss://0o28d1tfc9.execute-api.eu-central-1.amazonaws.com/production/") //endpoint wss://
-    var textBox = document.getElementById('TEXTBOX');
+    var textBox = document.getElementById('#TEXTBOX');
 
     socket.addEventListener('open', e=> {
         console.log('WebSocket is connected')
