@@ -11,7 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const PLAYERX_WON = 'PLAYERX_WON';
     const PLAYERO_WON = 'PLAYERO_WON';
     const TIE = 'TIE';
-
+    //connect to websocket
+    websocketConnect()
 
     /*
         Indexes within the board
@@ -122,3 +123,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
     resetButton.addEventListener('click', resetBoard);
 });
+
+function websocketConnect(){
+    const socket = new WebSocket("wss://0o28d1tfc9.execute-api.eu-central-1.amazonaws.com/production/") //endpoint wss://
+
+    socket.addEventListener('open', e=> {
+        console.log('WebSocket is connected')
+    })
+
+    socket.addEventListener('close', e => console.log("Socket is closed"))
+    socket.addEventListener('error', e => console.error("Socket is in error ",e))
+
+    socket.addEventListener('message', e=> {
+        console.log('Your answer is:' ,JSON.parse(e.data).message)
+    })
+
+    window.ask = function (msg){
+        const payload =  {
+            action = 'message',
+            msg
+        }
+    }
+
+    socket.send(JSON.stringify(payload))
+}
