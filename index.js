@@ -138,12 +138,12 @@ function websocketConnect(){
         console.log('Your answer is:' ,JSON.parse(e.data).message)
     })
 
-    window.ask = function (msg){
+  /*  window.ask = function (msg){
         const payload =  {
             action = 'action',
             msg
         }
     }
-
+*/
     socket.send(JSON.stringify(payload))
 }
