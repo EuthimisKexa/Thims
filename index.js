@@ -137,6 +137,7 @@ function websocketConnect(){
     socket.addEventListener('message', e=> {
         //console.log('Your answer is:' ,JSON.parse(e.data).message)
         console.log('Your answer is:' , e.data)
+        announcer.innerText = e.data;
     })
 
   /*  window.ask = function (msg){
