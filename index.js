@@ -135,7 +135,8 @@ function websocketConnect(){
     socket.addEventListener('error', e => console.error("Socket is in error ",e))
 
     socket.addEventListener('message', e=> {
-        console.log('Your answer is:' ,JSON.parse(e.data).message)
+        //console.log('Your answer is:' ,JSON.parse(e.data).message)
+        console.log('Your answer is:' , e.data)
     })
 
   /*  window.ask = function (msg){
