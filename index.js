@@ -1,4 +1,3 @@
-let board = ['', '', '', '', '', '', '', '', ''];
 const socket = new WebSocket("wss://0o28d1tfc9.execute-api.eu-central-1.amazonaws.com/production/") //endpoint wss://
 window.addEventListener('DOMContentLoaded', () => {
     const tiles = Array.from(document.querySelectorAll('.tile'));
@@ -6,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
 
-    
+    let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
 
@@ -84,6 +83,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const updateBoard =  (index) => {
         board[index] = currentPlayer;
+        let msgString = '{"action": "sendmessage", "message": "'+board+ '"}'
+        console.log('{"action": "sendmessage", "message": "'+board+'"}')
+        socket.send(msgString);
     }
 
     const changePlayer = () => {
@@ -97,11 +99,9 @@ window.addEventListener('DOMContentLoaded', () => {
         if(isValidAction(tile) && isGameActive) {
             tile.innerText = currentPlayer;
             tile.classList.add(`player${currentPlayer}`);
-            websocketSend();
             updateBoard(index);
             handleResultValidation();
             changePlayer();
-            websocketRecive();
         }
     }
     
@@ -131,7 +131,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function websocketConnect(){
     const messageSok = document.querySelector('.messageSocket');
     const resetButton = document.querySelector('#reset');
-   
+
     
     socket.addEventListener('open', e=> {
         console.log('WebSocket is connected')
@@ -140,24 +140,10 @@ function websocketConnect(){
     socket.addEventListener('close', e => console.log("Socket is closed"))
     socket.addEventListener('error', e => console.error("Socket is in error ",e))
 
-   
-
-   
-
-}
-
-function websocketSend(){
-    let msgString = '{"action": "sendmessage", "message": "'+board+ '"}'
-    console.log('{"action": "sendmessage", "message": "',board,'"}')
-    socket.send(msgString);
-}
-
-function websocketRecive(){
-
     socket.addEventListener('message', e=> {
         //console.log('Your answer is:' ,JSON.parse(e.data).message)
         console.log('Your answer is:' , e.data)
-        messageSok.innerText = e.data;
     })
-}
 
+    resetButton.addEventListener('click', resetBoard);
+}
