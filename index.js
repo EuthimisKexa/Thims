@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const playerDisplay = document.querySelector('.display-player');
     const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
-
+    const resetButton = document.querySelector('#reset');
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
@@ -129,8 +129,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function websocketConnect(){
-    const messageSok = document.querySelector('.messageSocket');
-    const resetButton = document.querySelector('#reset');
 
     
     socket.addEventListener('open', e=> {
@@ -145,5 +143,4 @@ function websocketConnect(){
         console.log('Your answer is:' , e.data)
     })
 
-    resetButton.addEventListener('click', resetBoard);
 }
