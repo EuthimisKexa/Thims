@@ -153,8 +153,8 @@ function websocketConnect(){
 
     const resetBoard = () => {
         var textbox = document.querySelector('#TEXTBOX');
-        let msgString = '{"action": "sendmessage", "message": "'+textbox.value+ '"}'
-        console.log('{"action": "sendmessage", "message": "',textbox.value,'"}')
+        let msgString = '{"action": "sendmessage", "message": "'+board+ '"}'
+        console.log('{"action": "sendmessage", "message": "',board,'"}')
         socket.send(msgString);
 
 
